@@ -1,9 +1,6 @@
 # Simple Issue Tracker V2.0
 
-####################################################################################
-Simple Issue Tracker V2 (SIT)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Design:System will have two models called User and Issue. With following information:
+#Design:System will have two models called User and Issue. With following information:
 
 1. User:
         a. Email
