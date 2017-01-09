@@ -30,8 +30,22 @@ $ source .pyenv/bin/activate
 $ pip install -r requirements.txt
 
 #Run
-$ python run.py
+$ python manage.py initdb
+$ python manage.py runserver
 * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 * Restarting with stat
 
 Now hit `http://localhost:5000/` to see the login
+
+For Help:
+$ python manage.py --help
+usage: manage.py [-?] {shell,initdb,runserver} ...
+
+positional arguments:
+  {shell,initdb,runserver}
+    shell               Runs a Python shell inside Flask application context.
+    initdb
+    runserver           Runs the Flask development server i.e. app.run()
+
+optional arguments:
+  -?, --help            show this help message and exit
