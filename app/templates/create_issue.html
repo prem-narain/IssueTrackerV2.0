@@ -1,0 +1,57 @@
+{% extends "layouts/header.html" %}
+{% set page_title = 'SimpleIssueTracker' %}
+{% block meta %}
+<!-- put meta tags here !-->
+<meta name="csrf-token" content="{{ csrf_token() }}"> 
+{% endblock %} 
+{% block css_style %}
+<link rel="stylesheet" href="/static/vendors/bootstrap-3.3.5-dist/css/bootstrap.css">
+<style type="text/css">
+  textarea#desc{
+    width:100%;
+    display:block;
+    max-width:100%;
+    padding:25px 15px 90px;
+    transition:box-shadow 0.5s ease;
+  }
+</style> 
+{% endblock %}
+{% block main_body %}
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+        Simple Issue Tracker -- V2.0
+      </a>
+        </div>
+    </div>
+    <ul class="nav navbar-nav">
+    <li style="float:right;margin-left:1210px;margin-top:-40px;position:absolute;"><button class="btn btn-success"><span class="glyphicon"></span>Log Out</button></li>
+    </ul>
+</nav>
+<div class="container">
+<div id='issue' class='well'>
+    <h2>Create New Issue</h2>
+    <br>
+    <form id='issue-form'>
+        <div class="form-group">
+            <label>Subject</label>
+            <input name='subject' class="form-control" placeholder="Title of the issue">
+        </div>
+        <div class="form-group">
+            <label>Assigned To</label>
+            <input name='email' class="form-control" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea id='desc' name='desc' class="form-control" placeholder="Please Write Some Lines about issue ..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
+{% endblock %}
+{% block js_btm %}
+<script src="/static/vendors/jquery.js"></script>
+<script src="/static/js/main.js"></script>
+{% endblock %}

@@ -28,7 +28,8 @@ class User(db.Model, UserMixin, UserJsonSerializer):
    
    # User Password
    _password = db.Column('password', db.String(UserConstants.PW_STRING_LEN), nullable=False)
-   
+
+
    def _get_password(self):
       return self._password
 
@@ -62,3 +63,17 @@ class User(db.Model, UserMixin, UserJsonSerializer):
    @classmethod
    def is_email_taken(cls, email_address):
       return db.session.query(db.exists().where(User.email==email_address)).scalar()
+
+class Issue(db.Model):
+  __tablename__='issue'
+  id = db.Column(db.Integer, primary_key=True)
+  Title = db.Column(db.String(50))
+  Description = db.Column(db.String(50))
+  AssignedTo=db.Column(db.Integer, db.ForeignKey('user.id'))
+  Createdby=db.Column(db.Integer, db.ForeignKey('user.id'))
+  Status=db.Column(db.String(10))
+ 
+  @property
+  def serialize(self):
+    """Return object data in easily serializeable format"""
+    return {'id':self.id,'Title': self.Title,'AssignedTo':self.AssignedTo,'Createdby':self.Createdby,'status':self.Status,'Description':self.Description}

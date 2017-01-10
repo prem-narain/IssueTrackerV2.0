@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request
+from flask import Flask, request,render_template
 
 import config as Config
 from .common import Response
@@ -87,20 +87,20 @@ def configure_hook(app):
 def configure_error_handlers(app):
    @app.errorhandler(500)
    def server_error_page(error):
-      return Response.make_error_resp(msg=str(error), code=500)  
+      return render_template('500-error.html')
 
-   @app.errorhandler(422)
+   @app.errorhandler(403)
    def semantic_error(error):
-      return Response.make_error_resp(msg=str(error.description), code=422)
+      return render_template('403-error.html')
 
    @app.errorhandler(404)
    def page_not_found(error):
-      return Response.make_error_resp(msg=str(error.description), code=404)
+      return render_template('404-error.html')
 
-   @app.errorhandler(403)
+   @app.errorhandler(502)
    def page_forbidden(error):
-      return Response.make_error_resp(msg=str(error.description), code=403)
+      return render_template('502-error.html')
 
-   @app.errorhandler(400)
+   @app.errorhandler(503)
    def page_bad_request(error):
-      return Response.make_error_resp(msg=str(error.description), code=400)
+      return render_template('503-error.html')
