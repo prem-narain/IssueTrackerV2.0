@@ -67,6 +67,7 @@ def signup():
          form.populate_obj(user)
 
          db.session.add(user)
+         print(form.email.data)
          db.session.commit()
 
       except Exception as e:
